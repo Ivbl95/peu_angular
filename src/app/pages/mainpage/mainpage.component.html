@@ -6,4 +6,13 @@
     <button mat-flat-button class="header__link" (click)="changeFile(technology)" *ngFor="let technology of technologies">{{technology}}</button>
   </nav>
 </header>
+<div class="burger">
+  <button mat-button [matMenuTriggerFor]="tech">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+  </button>
+
+  <mat-menu #tech="matMenu">
+    <button mat-menu-item (click)="changeFile(technology)" *ngFor="let technology of technologies">{{technology}}</button>
+  </mat-menu>
+</div>
 <div [innerHTML]="currentFile"></div>

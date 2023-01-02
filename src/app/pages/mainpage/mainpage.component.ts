@@ -22,12 +22,21 @@ export class MainpageComponent {
   }
 
   public colorWords(text: string): string {
-    let textData: string = text.replace(/class/g, '<font color="#FF8E00">class</font>');
-    textData = textData.replace(/def/g, '<font color="#7109AA">def</font>');
-    textData = textData.replace(/return/g, '<font color="#FF4100">return</font>');
-    textData = textData.replace(/print/g, '<font color="#0A67A3">print</font>');
-    textData = textData.replace(/import/g, '<font color="#00B25C">import</font>');
-    textData = textData.replace(/from/g, '<font color="#00B25C">from</font>');
-    return textData;
+    // const wordColor = {
+    //   class: 'FF8E00',
+    //   def: '7109AA',
+    //   return: 'FF4100',
+    //   print: '0A67A3',
+    //   pass: '0A67A3',
+    //   import: '00B25C',
+    //   from: '00B25C',
+    // }
+    return  text.replace(/class/g, '<font color="#FF8E00">class</font>')
+      .replace(/def/g, '<font color="#7109AA">def</font>')
+      .replace(/return/g, '<font color="#FF4100">return</font>')
+      .replace(/print/g, '<font color="#0A67A3">print</font>')
+      .replace(/pass/g, '<font color="#0A67A3">pass</font>')
+      .replace(/import/g, '<font color="#00B25C">import</font>')
+      .replace(/from/g, '<font color="#00B25C">from</font>');
   }
 }

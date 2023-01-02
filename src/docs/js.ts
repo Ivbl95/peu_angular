@@ -1,3 +1,9 @@
 export const js: string = `
-js
+<article>
+<div>Comments</div>
+<pre>
+// - one line comment
+/**/ - multiple lines comment
+</pre>
+</article>
 `
