@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { python } from "../../../docs/python";
 import { js } from "../../../docs/js";
 import { angular } from "../../../docs/angular";
