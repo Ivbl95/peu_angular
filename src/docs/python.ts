@@ -1,5 +1,6 @@
 export const python: string = `
-<div id="mixin" class="chapter">Mixins</div>
+<article>
+<div id="mixin">Mixins</div>
 <pre>
 class Animal:  # Базовый класс
     pass
@@ -26,7 +27,7 @@ barsik.run()
 # Экземпляр tosha не имеет доступа к методу run, так как миксин не подмешан в его класс
 # tosha.run()
 </pre>
-<div id="abc" class="chapter">Abstract base class</div>
+<div id="abc">Abstract base class</div>
 <pre>
 from abc import ABC  # Импорт базового класса ABC для использования абстрактного класса
 from abc import abstractmethod  # Импорт декоратора @abstractmethod
@@ -58,4 +59,5 @@ acer = Computer()
 # Нельзя создать экземпляр абстрактного класса
 # device = ElectronicDevice()
 </pre>
+</article>
 `;
