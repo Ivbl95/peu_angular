@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { python } from "../../../docs/python";
+import { js } from "../../../docs/js";
+import { angular } from "../../../docs/angular";
 
 @Component({
   selector: 'app-mainpage',
@@ -6,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./mainpage.component.sass']
 })
 export class MainpageComponent {
-  public technologies: string[] = ['JS', 'PYTHON'];
+  public technologiesObj: any = {
+    PYTHON: python,
+    JS: js,
+    ANGULAR: angular,
+  }
+  public technologies: string[] = ['JS', 'PYTHON', 'ANGULAR'];
+  public currentFile: string = '<div class="chapter">Base Page</div>';
+
+  public changeFile(technology: any): void {
+    this.currentFile = this.technologiesObj[technology];
+  }
 }

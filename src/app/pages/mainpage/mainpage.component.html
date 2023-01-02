@@ -1,8 +1,9 @@
 <header class="header">
   <div class="header__logo">
-    <a mat-flat-button href="#">PeuPeu</a>
+    <button mat-flat-button>PeuPeu</button>
   </div>
   <nav class="header__navigation">
-    <a mat-flat-button class="header__link" *ngFor="let technology of technologies" href="#">{{technology}}</a>
+    <button mat-flat-button class="header__link" (click)="changeFile(technology)" *ngFor="let technology of technologies">{{technology}}</button>
   </nav>
 </header>
+<div [innerHTML]="currentFile"></div>
