@@ -15,4 +15,7 @@
     <button mat-menu-item (click)="changeFile(technology)" *ngFor="let technology of technologies">{{technology}}</button>
   </mat-menu>
 </div>
-<div [innerHTML]="currentFile"></div>
+<div class="content" [innerHTML]="currentFile"></div>
+<footer class="footer">
+  <div>Created By Ivan Belyakov 2023</div>
+</footer>

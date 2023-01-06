@@ -7,8 +7,23 @@
   display: none
   position: fixed
 
+.content
+  min-height: calc(100vh - 40px)
+  padding-bottom: 40px
+
+.footer
+  height: 40px
+  margin-top: -40px
+  display: flex
+  justify-content: right
+  align-items: flex-end
+
 @media only screen and (max-width: 600px)
   .header
     display: none!important
   .burger
     display: block!important
+  .footer
+    margin-top: 0!important
+  .content
+    padding-bottom: 0!important
