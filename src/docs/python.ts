@@ -1,6 +1,26 @@
 export const python: string = `
 <article>
-<div id="mixin">Mixins</div>
+<div>Class</div>
+<pre>
+class FirstClass:  # Каждое слово в имени класса с большой буквы
+    pass  # Заполняет пустоту чтобы не было ошибки
+
+first_instance = FirstClass()  # Создать экземпляр класса
+
+class SecondClass:
+    def __init__(self, arg1, arg2):  # Конструктор класса принимает в себя новосозданный экземпляр (self) и два аргумента
+        self.arg1 = arg1
+        self.arg2 = arg2  # Присвоение данных в новосозданный экземпляр из аргументов, переданных при создании экземпляра
+
+second_instance = SecondClass('data_for_arg1', 'data_for_arg2')  # Создать экземпляр класса и передать данные в конструктор
+
+class ThirdClass:
+    def __init__(self, arg1=15):  # 15 - значение по умолчанию
+        self.arg1 = arg1
+
+third_instance = ThirdClass()  # Можно не передавать значение, если есть значение по умолчанию, иначе ошибка
+</pre>
+<div>Mixins</div>
 <pre>
 class Animal:  # Базовый класс
     pass
@@ -27,7 +47,7 @@ barsik.run()
 # Экземпляр tosha не имеет доступа к методу run, так как миксин не подмешан в его класс
 # tosha.run()
 </pre>
-<div id="abc">Abstract base class</div>
+<div>Abstract base class</div>
 <pre>
 from abc import ABC  # Импорт базового класса ABC для использования абстрактного класса
 from abc import abstractmethod  # Импорт декоратора @abstractmethod
