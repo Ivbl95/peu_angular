@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header__logo">
-    <button mat-flat-button>PeuPeu</button>
+    <button (click)="changeLogoText()" mat-flat-button>{{ this.logoText }}</button>
   </div>
   <nav class="header__navigation">
     <button mat-flat-button class="header__link" (click)="changeFile(technology)" *ngFor="let technology of technologies">{{technology}}</button>
@@ -8,7 +8,7 @@
 </header>
 <div class="burger">
   <button mat-button [matMenuTriggerFor]="tech">
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+    <mat-icon class="icon">more_vert</mat-icon>
   </button>
 
   <mat-menu #tech="matMenu">
@@ -17,5 +17,5 @@
 </div>
 <div class="content" [innerHTML]="currentFile"></div>
 <footer class="footer">
-  <div>Created By Ivan Belyakov 2023</div>
+  <div>Peupeu</div>
 </footer>

@@ -16,9 +16,14 @@ export class MainpageComponent {
   }
   public technologies: string[] = ['JS', 'PYTHON', 'ANGULAR'];
   public currentFile: string = '<article><div>Base Page</div></article>';
+  public logoText: any = 'PeuPeu';
 
   public changeFile(technology: any): void {
     this.currentFile = this.colorWords(this.technologiesObj[technology]);
+  }
+
+  public changeLogoText() {
+    this.logoText = 'Привет';
   }
 
   public colorWords(text: string): string {
