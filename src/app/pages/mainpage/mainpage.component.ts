@@ -42,6 +42,7 @@ export class MainpageComponent {
       .replace(/print/g, '<font color="#0A67A3">print</font>')
       .replace(/pass/g, '<font color="#0A67A3">pass</font>')
       .replace(/import/g, '<font color="#00B25C">import</font>')
-      .replace(/from/g, '<font color="#00B25C">from</font>');
+      .replace(/from/g, '<font color="#00B25C">from</font>')
+      .replace(/self/g, '<font color="#FF0000">self</font>');
   }
 }

@@ -1,5 +1,22 @@
 export const python: string = `
 <article>
+<div>Int, Float</div>
+<pre>
+# int
+x = 100  # 100
+x = 1_000_000  # 1000000, _ как разделитель
+int(1.7)  # 1, отбрасывает остаток у float
+
+# float
+x = 1.5  # 1.5
+x = 1e3  # 1000.0
+float(1)  # 1.0
+
+# number operations
+10%3  # 1, остаток от деления
+2**3  # 8, степень
+5//2  # 2, деление с отбросом остатка
+</pre>
 <div>Class</div>
 <pre>
 class FirstClass:  # Каждое слово в имени класса с большой буквы
