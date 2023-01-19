@@ -37,6 +37,70 @@ class ThirdClass:
 
 third_instance = ThirdClass()  # Можно не передавать значение, если есть значение по умолчанию, иначе ошибка
 </pre>
+<div>Атрибуты и методы</div>
+<pre>
+class Cat:
+    voice = 'meow'  # Статический атрибут
+
+    def __init__(self, name):
+        self.name = name  # Атрибут уровня экземпляра
+
+    def run(self):  # Метод класса
+        return 'тыгыдык'
+</pre>
+<div>Constant, Private, Protected, @Property</div>
+<pre>
+class Cat:
+    VOICE = 'meow'  # Статический атрибут константа. Ее можно поменять (но не надо)
+
+    def __init__(self, name, age):
+        self.__name = name  # Private атрибут, доступ только из своего класса
+        self._age = age  # Protected атрибут, доступ из своего класса и наследников
+
+    @property  # Свойство по сути геттер для приватного или защищенного атрибута
+    def name(self):
+        return self.__name
+
+    @name.setter  # Сеттер для приватного или защищенного атрибута
+    def name(self, value):
+        self.__name = value
+
+    @name.deleter  # Делетер для приватного или защищенного атрибута
+    def name(self):
+        del self.__name  # После удаления, обращение к нему вызовет ошибку
+
+
+
+myafa = Cat('Myafa', 3)
+print(myafa._Cat__name)  # Так можно получить доступ к Private (но не надо)
+print(myafa._age)  # Так можно получить доступ к Protected (но не надо)
+
+print(myafa.name)  # Get value
+myafa.name = 'myafka'  # Set value
+del myafa.name  # Delete attribute
+</pre>
+<div>@staticmethod, @classmethod</div>
+<pre>
+class Shake:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    @classmethod  # Имеет доступ к конструктору, статическим атрибутам и методам
+    def bananaMilkShake(cls):  # cls - это ссылка на класс, откуда вызывается метод (может быть дочерний или текущий)
+        return cls(['milk', 'banana'])  # Вызов конструктора Shake
+
+    @staticmethod  # Не имеет прямого доступа к классу
+    def strawberryMilkShake():
+        return Shake(['milk', 'strawberries'])  # Вызов конструктора Shake
+
+
+lemonIceShake = Shake(['lemon', 'ice', 'soda'])
+bananaMilkShake = Shake.bananaMilkShake()
+strawberryMilkShake = Shake.strawberryMilkShake()
+print(lemonIceShake.ingredients)
+print(bananaMilkShake.ingredients)
+print(strawberryMilkShake.ingredients)
+</pre>
 <div>Mixins</div>
 <pre>
 class Animal:  # Базовый класс
