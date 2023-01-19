@@ -54,5 +54,61 @@ ngOnInit() {
   });
 }
 </pre>
+<div>wildcart/404</div>
+<pre>
+const routes: Routes = [
+  { path: 'first-component', component: FirstComponent },
+  { path: 'second-component', component: SecondComponent },
+  { path: '**', component: MyPage }, // WildCart
+];
+// ** cовпадает со всеми url
+// должен быть в конце массива routes
+// component принимает компонент, куда будет переход при необработанном url
+</pre>
+<div>RedirectTo</div>
+<pre>
+const routes: Routes = [
+  { path: 'hello', component: HelloComponent },
+  { path: 'bye', component: ByeComponent },
+  { path: '', redirectTo: '/hello', pathMatch: 'full' },
+];
+// Redirecting from empty path to HelloComponent
+</pre>
+<div>Nested components</div>
+<pre>
+const routes: Routes = [
+  {
+    path: 'first-component',
+    component: FirstComponent,
+    children: [
+      { path: 'child-a', component: ChildAComponent },
+      { path: 'child-b', component: ChildBComponent },
+    ],
+  },
+];
+// This is way to create children's route
+
+&lt;h2&gt;First Component&lt;/h2&gt;
+&lt;a routerLink="child-a"&gt;Child A&lt;/a&gt;
+&lt;a routerLink="child-b"&gt;Child B&lt;/a&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+// This is way to go each child
+</pre>
+<div>Title</div>
+<pre>
+const routes: Routes = [
+  {
+    path: 'first-component',
+    title: 'First component',
+    component: FirstComponent,
+  },
+];
+// Title is a name which we can pass to ActivatedRoute
+
+this.route.title.subscribe((title) => {
+  this.title = title;
+});
+// Retrieving a title from ActivatedRoute
+</pre>
 </article>
 `
