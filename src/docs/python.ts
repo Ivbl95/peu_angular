@@ -101,6 +101,39 @@ print(lemonIceShake.ingredients)
 print(bananaMilkShake.ingredients)
 print(strawberryMilkShake.ingredients)
 </pre>
+<div>Наследование, полиморфизм</div>
+<pre>
+class Car:
+    def drive(self):
+        print('I drive')
+
+class LadaGranta(Car):  # Класс наследуется от Car
+    pass
+
+class LamborghiniMurcielago(Car):  # Класс наследуется от Car
+    pass
+
+lada = LadaGranta()
+lamborghini = LamborghiniMurcielago()
+
+for car in [lada, lamborghini]:  # Полиморфизм
+    car.drive()
+</pre>
+<div>Множественное наследование</div>
+<pre>
+class Car:
+    def __init__(self, age):
+        self.age = age
+
+class Bucket():
+    noise = True
+
+class LadaGranta(Bucket, Car):  # Множественное наследование
+    def __init__(self, age):
+        super().__init__(age)  # Вызов конструктора базового класса
+
+a = LadaGranta(1915)
+</pre>
 <div>Mixins</div>
 <pre>
 class Animal:  # Базовый класс
@@ -159,6 +192,23 @@ iphone = Mobile()
 acer = Computer()
 # Нельзя создать экземпляр абстрактного класса
 # device = ElectronicDevice()
+</pre>
+<div>Магические методы</div>
+<pre>
+class Road:
+    def __str__(self):
+        return 'Its road'
+
+    def __len__(self):
+        return 15
+
+    def __del__(self):
+        print('Road has been destroyed')
+
+road = Road()
+print(road)  # 'Its road'
+print(len(road))  # 15
+del road  # Выводит доп сообщение при удалении
 </pre>
 </article>
 `;
