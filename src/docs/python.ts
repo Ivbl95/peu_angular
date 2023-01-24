@@ -210,5 +210,10 @@ print(road)  # 'Its road'
 print(len(road))  # 15
 del road  # Выводит доп сообщение при удалении
 </pre>
+<div>Модули и пакеты</div>
+<pre>
+
+</pre>
+
 </article>
 `;

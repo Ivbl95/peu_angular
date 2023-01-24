@@ -1,114 +1,117 @@
 export const angular: string = `
 <article>
-<div>Routing</div>
+<div>Pre-rules of Routing</div>
 <pre>
-&lt;base href="/"&gt; // Пишется в head в index.html, подразумевает, что папка app корневая и использует '/'
-&lt;router-outlet&gt;&lt;/router-outlet&gt; // Добавить в компонент использования роутинга
+&lt;base href="/"&gt;
+<span>// Пишется в head в index.html, подразумевает, что папка app корневая и использует '/'</span>
 </pre>
-<div>AppRoutingModule</div>
+<div>Example of AppRoutingModule file</div>
 <pre>
-import { NgModule } from '@angular/core'; // Использовать модуль, CLI делает это автоматически
-import { Routes, RouterModule } from '@angular/router'; // Импорт роутера, CLI делает это автоматически
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+<span>// RouterModule позволяет использовать навигацию между компонентами</span>
 
-const routes: Routes = [ // Массив путей компонентом, CLI делает это автоматически
-  { path: 'first-component', component: FirstComponent }, // Объект с путем и компонентом назначения
-  { path: 'second-component', component: SecondComponent },
+const routes: Routes = [
+  { path: 'first', component: FirstComponent },
+  { path: 'second', component: SecondComponent },
 ];
+<span>// Массив определений для роутинга</span>
+<span>// Каждый объект содержит инструкцию о роутинге</span>
+<span>// Каждый объект имеет path (matcher) и component</span>
 
-@NgModule({ // Настройка импорта/экспорта, CLI делает это автоматически
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } // Экспорт класса, CLI делает это автоматически
+<span>// RouterModule.forRoot() - паттерн для регистрации провайдинга</span>
+<span>// RouterModule.forRoot() делает правила из массива routes доступными всему приложению</span>
 
-// Важен порядок имплементации в список Routes - 1. Static path, 2. Empty path'', 3. Wildcart**
+export class AppRoutingModule {}
+<span>// Экспорт класса AppRoutingModule для импорта его в AppModule</span>
 </pre>
-<div>Any component</div>
+<div>routerLink</div>
 <pre>
 &lt;h1&gt;Angular Router App&lt;/h1&gt;
-&lt;a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page"&gt;First&lt;/a&gt; // Ссылка для отображения компонента
-&lt;a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page"&gt;Second&lt;/a&gt;
-&lt;router-outlet&gt;&lt;/router-outlet&gt; // Добавить в компонент использования роутинга
-</pre>
-<div>ActivatedRoute => this.route.params</div>
-<pre>
-{ path: 'second/:id', component: SecondComponent } // Передавать id при роутинге (AppRoutingModule)
-
-&lt;a [routerLink]="['/second', '12']" routerLinkActive="active" ariaCurrentWhenActive="page"&gt;Second&lt;/a&gt; // 12 - это id который записывается в params
-
-constructor(private route: ActivatedRoute) {} // Чтобы юзать ActivatedRoute
-ngOnInit() {
-  this.route.params.subscribe((params) => { // Получить данные из ActivatedRoute.params
-    this.id = params['id']; // 12
-  });
-}
-</pre>
-<div>ActivatedRoute => this.route.queryParams</div>
-<pre>
-&lt;a [queryParams]='{ id: 12 }' routerLink="/second" routerLinkActive="active" ariaCurrentWhenActive="page"&gt;Second&lt;/a&gt; // 12 - это id который записывается в params
-
-constructor(private route: ActivatedRoute) {} // Чтобы юзать ActivatedRoute
-ngOnInit() {
-  this.route.queryParams.subscribe((params) => { // Получить данные из ActivatedRoute.queryParams
-    this.id = params['id']; // 12
-  });
-}
-</pre>
-<div>wildcart/404</div>
-<pre>
-const routes: Routes = [
-  { path: 'first-component', component: FirstComponent },
-  { path: 'second-component', component: SecondComponent },
-  { path: '**', component: MyPage }, // WildCart
-];
-// ** cовпадает со всеми url
-// должен быть в конце массива routes
-// component принимает компонент, куда будет переход при необработанном url
-</pre>
-<div>RedirectTo</div>
-<pre>
-const routes: Routes = [
-  { path: 'hello', component: HelloComponent },
-  { path: 'bye', component: ByeComponent },
-  { path: '', redirectTo: '/hello', pathMatch: 'full' },
-];
-// Redirecting from empty path to HelloComponent
-</pre>
-<div>Nested components</div>
-<pre>
-const routes: Routes = [
-  {
-    path: 'first-component',
-    component: FirstComponent,
-    children: [
-      { path: 'child-a', component: ChildAComponent },
-      { path: 'child-b', component: ChildBComponent },
-    ],
-  },
-];
-// This is way to create children's route
-
-&lt;h2&gt;First Component&lt;/h2&gt;
-&lt;a routerLink="child-a"&gt;Child A&lt;/a&gt;
-&lt;a routerLink="child-b"&gt;Child B&lt;/a&gt;
+&lt;a
+    routerLink="/first"
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page"
+&gt;First&lt;/a&gt;
 &lt;router-outlet&gt;&lt;/router-outlet&gt;
-// This is way to go each child
+<span>// routerLink - путь назначения роутинга</span>
+<span>// routerLinkActive - актиный класс css, когда мы в текущем расположении</span>
+<span>// ariaCurrentWhenActive - надстройка для слабовидящих</span>
+<span>// router-outlet - здесь отображается результат роутинга (вью новой страницы)</span>
 </pre>
-<div>Title</div>
+<div>ActivatedRoute.params</div>
 <pre>
-const routes: Routes = [
-  {
-    path: 'first-component',
-    title: 'First component',
-    component: FirstComponent,
-  },
-];
-// Title is a name which we can pass to ActivatedRoute
+{ path: 'second/:id', component: SecondComponent }
+<span>// Передавать id при роутинге</span>
 
-this.route.title.subscribe((title) => {
-  this.title = title;
+&lt;a [routerLink]="['/second', 1]"&gt;Second&lt;/a&gt;
+<span>// 1 - это id для передачи в params</span>
+
+this.route.params.subscribe((params) => {
+  this.id = params['id'];
 });
-// Retrieving a title from ActivatedRoute
+<span>// Получение данных из ActivatedRoute.params</span>
+</pre>
+<div>ActivatedRoute.queryParams</div>
+<pre>
+&lt;a [queryParams]='{ id: 1 }' routerLink="/second"&gt;Second&lt;/a&gt;
+<span>// Объект записывается в queryParams</span>
+
+this.route.queryParams.subscribe((params) => {
+  this.id = params['id'];
+});
+<span>// Получение данных из ActivatedRoute.queryParams</span>
+</pre>
+<div>Wildcart, Redirect, Title</div>
+<pre>
+{ path: 'first', component: FirstComponent, title: 'First Component', },
+<span>// title - заголовок объекта, ActivatedRoute.Title</span>
+
+{ path: '', redirectTo: '/first', pathMatch: 'full' },
+<span>// Редирект из '' в '/first'</span>
+
+{ path: '**', component: PageNotFound },
+<span>// WildCart ** cовпадает со всеми url, должен быть в конце массива routes</span>
+
+<span>// Важен порядок имплементации в список Routes - 1. Static path, 2. Empty path'', 3. Wildcart**</span>
+</pre>
+<div>Children</div>
+<pre>
+{
+  path: 'first',
+  component: FirstComponent,
+  children: [ { path: 'child', component: ChildAComponent } ],
+},
+<span>// children - массив объектов инструкций для дочерних компонентов FirstComponent</span>
+</pre>
+<div>Relative Path</div>
+<pre>
+&lt;a routerLink='../comp'&gt;Comp&lt;a&gt;
+<span>// Если компоненты на одном уровне, './' - если дочерний</span>
+
+this.router.navigate(['../comp'], { relativeTo: this.route });
+<span>// Относительный путь при навигации при помощи this.router.navigate</span>
+</pre>
+<div>Matcher</div>
+<pre>
+matcher: (url) => {
+  if (url.length === 1 && url[0]...) {
+    return {
+      consumed: url,
+      posParams: { username: new UrlSegment(url[0].path.slice(1), { /* parameters */ }) }
+    };
+  }
+  return null;
+},
+component: ProfileComponent
+
+// UrlSegment - функция для сравнения ссылок
+// Использование Matcher вместо Path
+// Слеш - это разделитель элементов массива url
 </pre>
 </article>
 `
