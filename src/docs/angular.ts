@@ -106,12 +106,10 @@ matcher: (url) => {
     };
   }
   return null;
-},
-component: ProfileComponent
-
-// UrlSegment - функция для сравнения ссылок
-// Использование Matcher вместо Path
-// Слеш - это разделитель элементов массива url
+}
+<span>// Использование Matcher вместо Path</span>
+<span>// UrlSegment - функция для сравнения ссылок</span>
+<span>// Слеш - это разделитель элементов массива url</span>
 </pre>
 </article>
 `

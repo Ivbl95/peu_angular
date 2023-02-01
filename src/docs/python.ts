@@ -214,6 +214,87 @@ del road  # Выводит доп сообщение при удалении
 <pre>
 
 </pre>
+<div>STACK</div>
+<pre>
+<span>Стек — список элементов, который может быть изменён лишь с одной стороны, называющейся вершиной стека.</span>
 
+class Stack:
+    def __init__(self):
+        self.stack = []
+<span># Добавление пустого стека при инициализации</span>
+
+    def push(self, elem):
+        self.stack.append(elem)
+<span># Добавление элемента в стек</span>
+
+    def pop(self):
+        result = self.stack.pop()
+        return result
+<span># Удаление элемента из стека и возврат удаленного элемента</span>
+
+    def peek(self):
+        return self.stack[self.count()-1]
+<span># Вернуть элемент с вершины стека (последний элемент)</span>
+
+    def count(self):
+        return len(self.stack)
+<span># Вернуть длину стека</span>
+
+    def __iter__(self):
+        self.index = self.count()-1
+        return self
+<span># Назначение индекса для работы с перебором с конца</span>
+
+    def __next__(self):
+        if self.index < 0:
+            raise StopIteration
+        result = self.stack[self.index]
+        self.index -= 1
+        return result
+<span># Назначение логики перебора стека с конца в начало</span>
+</pre>
+<div>Date, Time</div>
+<pre>
+from datetime import *
+print(MINYEAR, MAXYEAR)
+<span># 0, 9999 Минимальный и максимальный год</span>
+
+print(date.today())
+print(date(2009, 1, 1))
+print(date(2009, 1, 1).day)
+print(date(2009, 1, 1).month)
+print(date(2009, 1, 1).year)
+<span># Date</span>
+
+print(time)
+print(time(15, 20, 0))
+print(time(15, 20, 0).hour)
+print(time(15, 20, 0).minute)
+print(time(15, 20, 0).second)
+<span># Time</span>
+
+print(datetime.now())
+<span># Дата и время сейчас</span>
+
+td = datetime.now() - datetime(1, 1, 1)
+print(td)
+print(td.days)
+print(td.seconds)
+print(td.microseconds)
+<span># Разница между датами</span>
+<span># Все конвертируется в дни, секунды и мс</span>
+
+print(datetime.now() > datetime(1, 1, 1))
+print(datetime.now() < datetime(1, 1, 1))
+print(datetime(1, 1, 1) == datetime(1, 1, 1))
+<span># Сравнение величины дат, возвращает Bool</span>
+
+print(datetime.now().strftime('|%d|%m|%Y|'))
+<span># Вывод даты в собственном формате</span>
+
+some_date_string = '15,02,2008 15:26'
+print(datetime.strptime(some_date_string, '%d,%m,%Y %H:%M'))
+<span># Запись даты в собственном формате</span>
+</pre>
 </article>
 `;
