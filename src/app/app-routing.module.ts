@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainpageComponent } from './pages/mainpage/mainpage.component';
+import { MainComponent } from './pages/main/main.component';
 
 const routes: Routes = [
-  { path: 'main', component: MainpageComponent },
+  { path: 'main', component: MainComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: '**', redirectTo: '/main' },
 ];

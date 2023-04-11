@@ -1,0 +1,13 @@
+<div *ngIf="shouldShowLeftMenu" class="left-menu">
+  <ng-container *ngIf="!currentTech">
+    <button (click)="hideLeftMenu()">HideMenu</button>
+    <button *ngFor="let tech of getTechsNames()" (click)="setTech(tech)">{{tech}}</button>
+  </ng-container>
+
+  <ng-container *ngIf="currentTech">
+    <button (click)="resetTech()">Go back</button>
+    <button *ngFor="let theme of getThemesNames()" (click)="setTheme(theme)">{{theme}}</button>
+  </ng-container>
+</div>
+
+<div class="themes" [innerHTML]="currentThemeContent"></div>
